@@ -1,0 +1,26 @@
+{
+  "username": "Amir",
+  "transactions": [
+    {
+      "$type": "Income",
+      "source": "Salary",
+      "amount": 1500,
+      "description": "",
+      "date": "2025-07-12T17:05:24.882023+02:00"
+    },
+    {
+      "$type": "Expense",
+      "category": "Food",
+      "amount": 50.25,
+      "description": "Groceries",
+      "date": "2025-07-12T17:05:37.07866+02:00"
+    },
+    {
+      "$type": "Expense",
+      "category": "clothes",
+      "amount": 50,
+      "description": "",
+      "date": "2025-07-12T17:27:02.397798+02:00"
+    }
+  ]
+}
