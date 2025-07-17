@@ -12,3 +12,4 @@
 /Users/amirhosseinmaleki/Documents/University/S03/ProgrammingC#/PersonalBudgetTracker/PersonalBudgetTracker/obj/Debug/net9.0/PersonalBudgetTracker.pdb
 /Users/amirhosseinmaleki/Documents/University/S03/ProgrammingC#/PersonalBudgetTracker/PersonalBudgetTracker/obj/Debug/net9.0/PersonalBudgetTracker.genruntimeconfig.cache
 /Users/amirhosseinmaleki/Documents/University/S03/ProgrammingC#/PersonalBudgetTracker/PersonalBudgetTracker/obj/Debug/net9.0/ref/PersonalBudgetTracker.dll
+/Users/amirhosseinmaleki/Documents/University/S03/ProgrammingC#/PersonalBudgetTracker/PersonalBudgetTracker/obj/Debug/net9.0/PersonalBudgetTracker.sourcelink.json

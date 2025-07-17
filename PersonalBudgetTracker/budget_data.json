@@ -21,6 +21,13 @@
       "amount": 50,
       "description": "",
       "date": "2025-07-12T17:27:02.397798+02:00"
+    },
+    {
+      "$type": "Expense",
+      "category": "trip",
+      "amount": 100,
+      "description": "dresden-trip",
+      "date": "2024-10-10T00:00:00"
     }
   ]
 }
