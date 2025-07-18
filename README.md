@@ -113,12 +113,6 @@ PersonalBudgetTracker/
 
 ## Technical Details
 
-### Architecture
-- **Clean Architecture:** Separation of concerns with distinct layers
-- **Interface-driven design:** Loose coupling with dependency injection
-- **Command Pattern:** Extensible command processing system
-- **Repository Pattern:** Abstract data storage for future extensibility
-
 ### Data Storage
 - **Format:** JSON with type discriminators for inheritance
 - **Location:** Same directory as source files
