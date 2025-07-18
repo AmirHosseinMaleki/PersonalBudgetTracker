@@ -160,15 +160,3 @@ Transport: $150.00
 Utilities: $80.00
 ----------------------------------------
 ```
-
-## Development
-
-### Building
-```bash
-dotnet build
-```
-
-### Running
-```bash
-dotnet run
-```
