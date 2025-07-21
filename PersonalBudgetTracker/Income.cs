@@ -11,7 +11,8 @@ public class Income : Transaction
 
     public Income(decimal amount, string source, string description, DateTime? date) : base(amount, description, date)
     {
-        if (string.IsNullOrEmpty(source)) throw new ArgumentException("Source cannot be null or empty");
+        if (string.IsNullOrEmpty(source)) 
+            throw new EmptyFieldException("Source");
         Source = source;
     }
     

@@ -19,7 +19,8 @@ public abstract class Transaction
 
     protected Transaction(decimal amount, string description, DateTime? date)
     {
-        if (amount <= 0) throw new ArgumentException("Amount must be positive");
+        if (amount <= 0) 
+            throw new InvalidAmountException(amount);
         Amount = amount;
         Date = date?? DateTime.Now;
         Description = description?? "";
