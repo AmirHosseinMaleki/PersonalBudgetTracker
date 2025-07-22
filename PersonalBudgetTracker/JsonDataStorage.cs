@@ -26,25 +26,55 @@ public class JsonDataStorage : IDataStorage
         return directory?.FullName ?? currentDirectory;
     }
 
-    public void SaveAccount(Account account)
+    public void SaveAccount(Account account) 
     {
-        string json = JsonSerializer.Serialize(account, GetJsonOptions());
-        
-        File.WriteAllText(_filePath, json);
+        try
+        {
+            string json = JsonSerializer.Serialize(account, GetJsonOptions());
+            File.WriteAllText(_filePath, json);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            throw new DataStorageException(_filePath, "Access denied. Check file permissions.", ex);
+        }
+        catch (DirectoryNotFoundException ex)
+        {
+            throw new DataStorageException(_filePath, "Directory not found.", ex);
+        }
+        catch (IOException ex)
+        {
+            throw new DataStorageException(_filePath, "File input/output error.", ex);
+        }
+        catch (JsonException ex)
+        {
+            throw new DataStorageException(_filePath, "Failed to serialize account data to JSON.", ex);
+        }
     }
 
-    public Account LoadAccount()
+    public Account LoadAccount() 
     {
         if (!File.Exists(_filePath))
+            throw new FileNotFoundException($"Account data file not found: {_filePath}");
+        
+        try
         {
-            throw new FileNotFoundException($"{_filePath} data not found");
+            string json = File.ReadAllText(_filePath);
+            Account? account = JsonSerializer.Deserialize<Account>(json, GetJsonOptions());
+        
+            return account ?? throw new DataStorageException(_filePath, "Deserialized account is null - file may be corrupted.");
         }
-        
-        string json = File.ReadAllText(_filePath);
-        
-        Account? account = JsonSerializer.Deserialize<Account>(json, GetJsonOptions());
-        
-        return account ?? throw new InvalidOperationException("Failed to deserialize account data");
+        catch (UnauthorizedAccessException ex)
+        {
+            throw new DataStorageException(_filePath, "Access denied. Check file permissions.", ex);
+        }
+        catch (IOException ex)
+        {
+            throw new DataStorageException(_filePath, "File input/output error.", ex);
+        }
+        catch (JsonException ex)
+        {
+            throw new DataStorageException(_filePath, "Invalid JSON format - file may be corrupted.", ex);
+        }
     }
 
     private JsonSerializerOptions GetJsonOptions()
