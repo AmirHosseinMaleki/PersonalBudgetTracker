@@ -4,19 +4,14 @@ A C# console application for managing personal finances, allowing users to track
 
 ## Features
 
-- ✅ **Add Income & Expenses** - Record financial transactions with descriptions and dates
-- ✅ **Transaction Categories** - Organize expenses by category (Food, Transport, Utilities, etc.)
-- ✅ **Balance Calculation** - View current financial balance (total income - total expenses)
-- ✅ **Transaction Filtering** - List transactions by type and date range
-- ✅ **Category Summaries** - View spending breakdown by category
-- ✅ **Data Persistence** - All data saved to JSON file for persistence between sessions
-- ✅ **Date Support** - Add transactions with specific dates or use current date
-- ✅ **Flexible Commands** - User-friendly command-line interface
-
-## Requirements
-
-- .NET 6.0 or higher
-- Windows, macOS, or Linux
+-  **Add Income & Expenses** - Record financial transactions with descriptions and dates
+-  **Transaction Categories** - Organize expenses by category (Food, Transport, Utilities, etc.)
+-  **Balance Calculation** - View current financial balance (total income - total expenses)
+-  **Transaction Filtering** - List transactions by type and date range
+-  **Category Summaries** - View spending breakdown by category
+-  **Data Persistence** - All data saved to JSON file for persistence between sessions
+-  **Date Support** - Add transactions with specific dates or use current date
+-  **Flexible Commands** - User-friendly command-line interface
 
 ## Installation & Setup
 
