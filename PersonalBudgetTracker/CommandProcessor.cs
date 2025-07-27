@@ -30,9 +30,13 @@ public class CommandProcessor
             else if (command == "exit") return ProcessExit();
             else return "Unknown command. Available commands: add, list, balance, category_summary, exit";
         }
-        catch (Exception e)
+        catch (DataStorageException ex)
         {
-            return $"Error: {e.Message}";
+            return $"Storage Error: {ex.Message}";
+        }
+        catch (Exception ex)
+        {
+            return $"Error: {ex.Message}";
         }
     }
 
@@ -58,39 +62,57 @@ public class CommandProcessor
         if (parts.Length < 4) 
             return "Usage: add income <amount> <source> [description] [date]";
         
-        if (!decimal.TryParse(parts[2], out decimal amount)) 
-            return "Invalid amount. Please enter a valid number.";
-        
-        string source = parts[3];
-        
-        string description = "";
-        DateTime? date = null;
-
-        if (parts.Length > 4)
-        {
-            string lastPart = parts[parts.Length - 1];
-            if (DateTime.TryParse(lastPart, out DateTime parsedDate))
-            {
-                date = parsedDate;
-                if (parts.Length > 5)
-                    description = string.Join(" ", parts, 4, parts.Length - 5);
-            }
-            else
-            {
-                description = string.Join(" ", parts, 4, parts.Length - 4);
-            }
-        }
-
         try
         {
+            if (!decimal.TryParse(parts[2], out decimal amount))
+                throw new InvalidAmountException(0, $"'{parts[2]}' is not a valid number.");
+            
+            string source = parts[3];
+            if (string.IsNullOrWhiteSpace(source))
+                throw new EmptyFieldException("Source");
+            
+            string description = "";
+            DateTime? date = null;
+            
+            if (parts.Length > 4)
+            {
+                string lastPart = parts[parts.Length - 1];
+                if (DateTime.TryParse(lastPart, out DateTime parsedDate))
+                {
+                    date = parsedDate;
+                    if (parts.Length > 5)
+                        description = string.Join(" ", parts, 4, parts.Length - 5);
+                }
+                else
+                {
+                    description = string.Join(" ", parts, 4, parts.Length - 4);
+                }
+            }
+            
             _budgetManager.AddIncome(amount, date, description, source);
             string dateStr = date?.ToString("dd/MM/yyyy") ?? DateTime.Now.ToString("dd/MM/yyyy");
-            return $"Income of {amount:C} from {source} added for {dateStr}";
-
+            return $"Income of {amount:C} from {source} added for {dateStr}.";
         }
-        catch (Exception e)
+        
+        catch (InvalidAmountException ex)
         {
-            return $"Error adding income: {e.Message}";
+            return $"Error: {ex.Message}";
+        }
+        catch (EmptyFieldException ex)
+        {
+            return $"Error: {ex.Message}";
+        }
+        catch (InvalidDateFormatException ex)
+        {
+            return $"Error: {ex.Message}";
+        }
+        catch (DataStorageException ex)
+        {
+            return $"Storage Error: {ex.Message}";
+        }
+        catch (Exception ex)
+        {
+            return $"Unexpected error: {ex.Message}";
         }
     }
 
@@ -101,41 +123,59 @@ public class CommandProcessor
         if (parts.Length < 4)
             return "Usage: add expense <amount> <category> <description> [date]";
         
-        
-        if (!decimal.TryParse(parts[2], out decimal amount)) 
-            return "Invalid amount. Please enter a valid number.";
-        
-        string category = parts[3];
-        
-        string description = "";
-        DateTime? date = null;
-
-        if (parts.Length > 4)
-        {
-            string lastPart = parts[parts.Length - 1];
-            if (DateTime.TryParse(lastPart, out DateTime parsedDate))
-            {
-                date = parsedDate;
-                if (parts.Length > 5)
-                    description = string.Join(" ", parts, 4, parts.Length - 5);
-            }
-            else
-            {
-                description = string.Join(" ", parts, 4, parts.Length - 4);
-            }
-        }
-
         try
         {
+            if (!decimal.TryParse(parts[2], out decimal amount))
+                throw new InvalidAmountException(0, $"'{parts[2]}' is not a valid number.");
+            
+            string category = parts[3];
+            if (string.IsNullOrWhiteSpace(category))
+                throw new EmptyFieldException("Category");
+            
+            string description = "";
+            DateTime? date = null;
+            
+            if (parts.Length > 4)
+            {
+                string lastPart = parts[parts.Length - 1];
+                if (DateTime.TryParse(lastPart, out DateTime parsedDate))
+                {
+                    date = parsedDate;
+                    if (parts.Length > 5)
+                        description = string.Join(" ", parts, 4, parts.Length - 5);
+                }
+                else
+                {
+                    description = string.Join(" ", parts, 4, parts.Length - 4);
+                }
+            }
+            
             _budgetManager.AddExpense(amount, date, description, category);
             string dateStr = date?.ToString("dd/MM/yyyy") ?? DateTime.Now.ToString("dd/MM/yyyy");
+            
             string descriptionPart = string.IsNullOrEmpty(description) ? "" : $" ({description})";
             return $"Expense of {amount:C} for {category}{descriptionPart} added for {dateStr}.";
-
         }
-        catch (Exception e)
+        
+        catch (InvalidAmountException ex)
         {
-            return $"Error adding expense: {e.Message}";
+            return $"Error: {ex.Message}";
+        }
+        catch (EmptyFieldException ex)
+        {
+            return $"Error: {ex.Message}";
+        }
+        catch (InvalidDateFormatException ex)
+        {
+            return $"Error: {ex.Message}";
+        }
+        catch (DataStorageException ex)
+        {
+            return $"Storage Error: {ex.Message}";
+        }
+        catch (Exception ex)
+        {
+            return $"Unexpected error: {ex.Message}";
         }
     }
 
