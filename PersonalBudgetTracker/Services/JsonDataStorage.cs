@@ -1,7 +1,11 @@
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Services;
+
+using PersonalBudgetTracker.Exceptions;
+using PersonalBudgetTracker.Models;
+
 
 public class JsonDataStorage : IDataStorage
 {

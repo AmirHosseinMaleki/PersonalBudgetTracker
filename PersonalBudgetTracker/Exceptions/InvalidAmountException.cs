@@ -1,4 +1,4 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Exceptions;
 
 public class InvalidAmountException : Exception
 {

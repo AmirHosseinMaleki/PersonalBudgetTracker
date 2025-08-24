@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Models;
+
+using PersonalBudgetTracker.Exceptions;
 
 [JsonDerivedType(typeof(Income), "Income")]
 [JsonDerivedType(typeof(Expense), "Expense")]

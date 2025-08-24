@@ -1,4 +1,4 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Enums;
 
 public enum TransactionTypeFilter
 {

@@ -1,4 +1,6 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Services;
+using PersonalBudgetTracker.Models;
+using PersonalBudgetTracker.Enums;
 
 public class BudgetManager
 {

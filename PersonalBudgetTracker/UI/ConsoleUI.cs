@@ -1,4 +1,4 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.UI;
 
 public class ConsoleUI 
 {

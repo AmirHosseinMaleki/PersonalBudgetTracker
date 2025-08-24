@@ -1,7 +1,12 @@
 using System.Globalization;
 using System.Text;
 
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.UI;
+
+using PersonalBudgetTracker.Services;
+using PersonalBudgetTracker.Exceptions;
+using PersonalBudgetTracker.Enums;
+using PersonalBudgetTracker.Models;
 
 public class CommandProcessor
 {

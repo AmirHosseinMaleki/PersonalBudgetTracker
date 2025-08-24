@@ -1,4 +1,7 @@
 ﻿using System;
+using PersonalBudgetTracker.Models;
+using PersonalBudgetTracker.Services;
+using PersonalBudgetTracker.UI;
 
 namespace PersonalBudgetTracker
 {

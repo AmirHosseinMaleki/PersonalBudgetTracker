@@ -1,4 +1,4 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Models;
 
 public class Account
 {

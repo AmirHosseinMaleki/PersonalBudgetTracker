@@ -1,4 +1,6 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Services;
+
+using PersonalBudgetTracker.Models;
 
 public interface IDataStorage
 {

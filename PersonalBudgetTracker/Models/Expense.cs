@@ -1,4 +1,6 @@
-namespace PersonalBudgetTracker;
+namespace PersonalBudgetTracker.Models;
+
+using PersonalBudgetTracker.Exceptions;
 
 public class Expense : Transaction
 {
