@@ -94,7 +94,7 @@ public class CommandProcessor
                 }
             }
             
-            _budgetManager.AddIncome(amount, date, description, source);
+            _budgetManager.AddIncome(amount, source, description, date);
             string dateStr = date?.ToString("dd/MM/yyyy") ?? DateTime.Now.ToString("dd/MM/yyyy");
             return $"Income of {amount:C} from {source} added for {dateStr}.";
         }
@@ -155,7 +155,7 @@ public class CommandProcessor
                 }
             }
             
-            _budgetManager.AddExpense(amount, date, description, category);
+            _budgetManager.AddExpense(amount, category, description, date);
             string dateStr = date?.ToString("dd/MM/yyyy") ?? DateTime.Now.ToString("dd/MM/yyyy");
             
             string descriptionPart = string.IsNullOrEmpty(description) ? "" : $" ({description})";

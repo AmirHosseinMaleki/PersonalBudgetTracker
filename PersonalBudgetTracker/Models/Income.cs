@@ -13,7 +13,7 @@ public class Income : Transaction
 
     public Income(decimal amount, string source, string description, DateTime? date) : base(amount, description, date)
     {
-        if (string.IsNullOrEmpty(source)) 
+        if (string.IsNullOrWhiteSpace(source)) 
             throw new EmptyFieldException("Source");
         Source = source;
     }

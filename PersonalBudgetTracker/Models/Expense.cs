@@ -13,7 +13,7 @@ public class Expense : Transaction
 
     public Expense(decimal amount, string category, string description, DateTime? date ) : base(amount, description, date)
     {
-        if (string.IsNullOrEmpty(category)) 
+        if (string.IsNullOrWhiteSpace(category)) 
             throw new EmptyFieldException("Category");
         Category = category.Trim();
     }

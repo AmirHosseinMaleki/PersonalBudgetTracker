@@ -13,14 +13,14 @@ public class BudgetManager
         _dataStorage = dataStorage;
     }
 
-    public void AddIncome(decimal amount, DateTime? date, string description, string source)
+    public void AddIncome(decimal amount, string source, string description = "", DateTime? date = null)
     {
         var income = new Income(amount, source, description, date);
         _account.Transactions.Add(income);
         _dataStorage.SaveAccount(_account);
     }
 
-    public void AddExpense(decimal amount, DateTime? date, string description, string category)
+    public void AddExpense(decimal amount, string category, string description = "", DateTime? date = null)
     {
         var expense = new Expense(amount, category, description, date);
         _account.Transactions.Add(expense);
@@ -46,7 +46,7 @@ public class BudgetManager
         return totalIncome - totalExpenses;
     }
 
-    public List<Transaction> GetTransactions(TransactionTypeFilter typeFilter, DateRangeFilter dateFilter, DateTime? startDate=null, DateTime? endDate=null)
+    public List<Transaction> GetTransactions(TransactionTypeFilter typeFilter, DateRangeFilter dateFilter = DateRangeFilter.All, DateTime? startDate=null, DateTime? endDate=null)
     {
         List<Transaction> results = new List<Transaction>();
 
@@ -90,7 +90,7 @@ public class BudgetManager
     }
     
 
-    public Dictionary<string, decimal> GetCategorySpending(DateRangeFilter dateFilter, DateTime? startDate=null, DateTime? endDate=null)
+    public Dictionary<string, decimal> GetCategorySpending(DateRangeFilter dateFilter = DateRangeFilter.CurrentMonth, DateTime? startDate=null, DateTime? endDate=null)
     {
         Dictionary<string, decimal> categoryTotalSpending = new Dictionary<string, decimal>();
 
