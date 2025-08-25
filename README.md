@@ -11,7 +11,6 @@ A C# console application for managing personal finances, allowing users to track
 -  **Category Summaries** - View spending breakdown by category
 -  **Data Persistence** - All data saved to JSON file for persistence between sessions
 -  **Date Support** - Add transactions with specific dates or use current date
--  **Flexible Commands** - User-friendly command-line interface
 
 ## Installation & Setup
 
@@ -104,6 +103,10 @@ PersonalBudgetTracker/
 │   ├── TransactionTypeFilter.cs  # Transaction type filtering
 │   └── DateRangeFilter.cs        # Date range filtering
 └── budget_data.json       # Data file (created automatically)
+
+PersonalBudgetTracker.Tests/
+├── BudgetManager_UnitTest.cs   # Unit tests for BudgetManager
+└── Transaction_UnitTest.cs     # Unit tests for Transaction
 ```
 
 ## Technical Details
