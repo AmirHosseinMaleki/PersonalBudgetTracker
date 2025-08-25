@@ -116,12 +116,6 @@ PersonalBudgetTracker.Tests/
 - **Location:** Same directory as source files
 - **Persistence:** Automatic saving after each transaction
 
-### Design Patterns Used
-- **Repository Pattern:** Data access abstraction
-- **Command Pattern:** User command processing
-- **Factory Pattern:** Transaction creation
-- **Strategy Pattern:** Different date filtering strategies
-
 ## Sample Output
 
 ```
