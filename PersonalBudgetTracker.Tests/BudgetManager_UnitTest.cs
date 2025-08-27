@@ -7,7 +7,7 @@ using PersonalBudgetTracker.Services;
 using PersonalBudgetTracker.Enums;
 
 
-public class BudgetManagerTests : IDisposable
+public class BudgetManagerTests
 {
     private readonly Account _account;
     private readonly Mock<IDataStorage> _mockStorage;
@@ -101,9 +101,5 @@ public class BudgetManagerTests : IDisposable
         Assert.Equal(150m, categorySpending["Food"]);
         Assert.Equal(30m, categorySpending["Transport"]);
         Assert.DoesNotContain("Salary", categorySpending.Keys);
-    }
-    
-    public void Dispose()
-    {
     }
 }
