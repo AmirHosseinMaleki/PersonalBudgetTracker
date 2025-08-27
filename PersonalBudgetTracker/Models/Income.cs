@@ -2,6 +2,10 @@ namespace PersonalBudgetTracker.Models;
 
 using PersonalBudgetTracker.Exceptions;
 
+/**
+ * Represents an income transaction with source identification.
+ * Extends Transaction with a Source property and validates that source is not empty.
+ */
 public class Income : Transaction
 {
     public string Source { get; set; }
@@ -10,7 +14,7 @@ public class Income : Transaction
     {
         Source = "";
     }
-
+    
     public Income(decimal amount, string source, string description, DateTime? date) : base(amount, description, date)
     {
         if (string.IsNullOrWhiteSpace(source)) 

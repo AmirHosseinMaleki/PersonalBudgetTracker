@@ -1,5 +1,9 @@
 namespace PersonalBudgetTracker.Models;
 
+/**
+ * Represents a user account containing personal budget information.
+ * Holds the username and maintains a collection of all financial transactions.
+ */
 public class Account
 {
     public string Username { get; set; }

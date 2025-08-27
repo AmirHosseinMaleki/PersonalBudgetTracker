@@ -17,6 +17,12 @@ public class CommandProcessor
         _budgetManager = budgetManager;
     }
 
+    /**
+     * Parses the input string and routes to appropriate command handlers.
+     * Splits input into parts and calls corresponding process methods.
+     * @param input The command string entered by the user
+     * @return Result string from the command handler or error message
+     */
     public string ProcessCommand(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
@@ -60,6 +66,13 @@ public class CommandProcessor
             return "Usage: add income <amount> <source> OR add expense <amount> <category> <description>";
     }
 
+    /**
+     * Parses and processes an "add income" command.
+     * Extracts amount, source, description, and optional date from command parts.
+     * Supports flexible parameter ordering with optional date parameter.
+     * @param parts Array of command parts split by spaces
+     * @return Success message with transaction details or error message
+     */
     private string ProcessAddIncome(string[] parts)
     {
         // Expected: add income <amount> <source> [description] [date]

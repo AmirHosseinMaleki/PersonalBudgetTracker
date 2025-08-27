@@ -1,5 +1,9 @@
 namespace PersonalBudgetTracker.UI;
 
+/**
+ * Manages the console-based user interface for the budget tracking application.
+ * Handles user input/output, displays welcome messages and help text, and coordinates with CommandProcessor.
+ */
 public class ConsoleUI 
 {
     private CommandProcessor _commandProcessor;

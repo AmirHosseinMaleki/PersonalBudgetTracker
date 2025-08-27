@@ -13,6 +13,14 @@ public class BudgetManager
         _dataStorage = dataStorage;
     }
 
+    /**
+     * Adds a new income transaction to the account and saves the data to storage.
+     * Creates an Income object and adds it to the account's transaction list.
+     * @param amount The income amount
+     * @param source The source of the income
+     * @param description Optional description of the income
+     * @param date Transaction date (defaults to current date if null)
+     */
     public void AddIncome(decimal amount, string source, string description = "", DateTime? date = null)
     {
         var income = new Income(amount, source, description, date);
@@ -26,7 +34,12 @@ public class BudgetManager
         _account.Transactions.Add(expense);
         _dataStorage.SaveAccount(_account);
     }
-
+    
+    /**
+     * Calculates the current account balance by subtracting total expenses from total income.
+     * Iterates through all transactions and sums income and expense amounts separately.
+     * @return The current balance as a decimal value
+     */
     public decimal GetBalance()
     {
         decimal totalIncome = 0;
@@ -46,6 +59,15 @@ public class BudgetManager
         return totalIncome - totalExpenses;
     }
 
+    /**
+     * Retrieves transactions filtered by type and date range.
+     * Uses helper methods to apply type and date filtering logic.
+     * @param typeFilter Filter by transaction type (All, Income, Expense)
+     * @param dateFilter Filter by date range (All, CurrentMonth, Custom)
+     * @param startDate Start date for custom date range
+     * @param endDate End date for custom date range
+     * @return List of transactions matching the specified filters
+     */
     public List<Transaction> GetTransactions(TransactionTypeFilter typeFilter, DateRangeFilter dateFilter = DateRangeFilter.All, DateTime? startDate=null, DateTime? endDate=null)
     {
         List<Transaction> results = new List<Transaction>();

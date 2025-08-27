@@ -4,6 +4,11 @@ namespace PersonalBudgetTracker.Models;
 
 using PersonalBudgetTracker.Exceptions;
 
+/**
+ * Abstract base class representing a financial transaction.
+ * Provides common properties (Amount, Date, Description) and validation logic.
+ * Configured with JSON attributes to support polymorphic serialization of Income and Expense subclasses.
+ */
 [JsonDerivedType(typeof(Income), "Income")]
 [JsonDerivedType(typeof(Expense), "Expense")]
 public abstract class Transaction

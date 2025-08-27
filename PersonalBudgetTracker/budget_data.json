@@ -28,6 +28,20 @@
       "amount": 100,
       "description": "dresden-trip",
       "date": "2024-10-10T00:00:00"
+    },
+    {
+      "$type": "Income",
+      "source": "salary",
+      "amount": 200,
+      "description": "",
+      "date": "2025-08-27T16:06:00.171692+02:00"
+    },
+    {
+      "$type": "Expense",
+      "category": "bolt",
+      "amount": 20,
+      "description": "",
+      "date": "2025-08-27T16:06:29.648493+02:00"
     }
   ]
 }
